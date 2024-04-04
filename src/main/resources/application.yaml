@@ -14,16 +14,3 @@ spring:
       hibernate:
         show_sql: true
         format_sql: true
-  cloud:
-    function:
-      definition: consume;supply
-    stream:
-      kafka:
-        binder:
-          brokers: localhost:9092
-      bindings:
-        consume-in-0:
-          destination: test-topic
-          group: test-group
-        supply-out-0: # ???? ???? ?? ? ???? ?? ?????.
-          destination: test-topic # ???? ??? Kafka ??
