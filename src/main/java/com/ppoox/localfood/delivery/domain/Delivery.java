@@ -6,9 +6,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
+@EntityListeners(AuditingEntityListener.class)
 @Entity
 @Table(name = "dv_delivery")
 @Getter
@@ -23,9 +27,16 @@ public class Delivery {
     @Enumerated(EnumType.STRING)
     private DeliveryStatus status;
 
+    @OneToMany(mappedBy = "delivery")
+    private List<DeliveryAddress> deliveryAddresses = new ArrayList<>();
+
     @CreatedDate
     private LocalDateTime createdAt;
 
     @LastModifiedDate
     private LocalDateTime updatedBy;
+
+    public void setStatus() {
+        this.status = DeliveryStatus.COMPLETE;
+    }
 }

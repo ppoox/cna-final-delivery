@@ -1,9 +1,10 @@
 package com.ppoox.localfood.delivery.adapter.out.persistence;
 
 import com.ppoox.localfood.delivery.domain.Delivery;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-@RepositoryRestResource(collectionResourceRel = "deliveries", itemResourceRel = "delivery", path = "delivery")
-public interface DeliveryRepository extends CrudRepository<Delivery, Long> {
+//@RepositoryRestResource(exported = false, collectionResourceRel = "deliveries", itemResourceRel = "delivery", path = "delivery")
+@Repository
+public interface DeliveryRepository extends JpaRepository<Delivery, Long> {
 }
